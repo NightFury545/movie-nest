@@ -1,0 +1,96 @@
+.button {
+  position: relative;
+  overflow: hidden;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: var(--font-sans), sans-serif;
+  line-height: 1.5;
+
+  border-radius: var(--border-radius);
+  border: 0 solid var(--border-interactive);
+
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast) ease,
+    color var(--transition-fast) ease,
+    border-color var(--transition-fast) ease;
+}
+
+/* =================
+   ВАРІАНТИ КОЛЬОРУ
+   ================= */
+.primary {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+}
+
+.primary:hover {
+  background-color: var(--btn-primary-hover);
+  border-color: var(--btn-primary-hover);
+}
+
+.secondary {
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+}
+
+.secondary:hover {
+  background-color: var(--btn-secondary-hover-bg);
+}
+
+/* =================
+   РОЗМІРИ
+   ================= */
+.small {
+  padding: 0.4em 0.9em;
+  font-size: 0.85rem;
+}
+
+.medium {
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+}
+
+.large {
+  padding: 0.8em 1.6em;
+  font-size: 1.125rem;
+}
+
+/* =================
+   СТАНИ
+   ================= */
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+}
+
+/* =================
+   RIPPLE EFFECT
+   ================= */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}

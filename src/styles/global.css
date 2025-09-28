@@ -1,0 +1,53 @@
+/* ======================================= */
+/* Global styles for MovieNest */
+/* Тільки базові стилі і скидання */
+/* ======================================= */
+
+/* Імпорт змінних */
+@import './variables.css';
+
+/* =================== */
+/* Базові стилі */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans), sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-width: 320px;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), sans-serif;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* Лінки */
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast) ease;
+}
+
+a:hover {
+  color: var(--accent-primary-hover);
+}
+
+/* Виділення тексту */
+::selection {
+  background-color: var(--accent-primary);
+  color: var(--text-on-accent);
+}
