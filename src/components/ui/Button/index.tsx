@@ -8,6 +8,7 @@ const Button: React.FC<ButtonProps> = ({
   size = 'medium',
   disabled = false,
   onClick,
+  className,
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -46,7 +47,12 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       ref={buttonRef}
-      className={`${styles.button} ${styles[variant]} ${styles[size]} ${disabled ? styles.disabled : ''}`}
+      className={`
+        ${styles.button} 
+        ${styles[variant]} 
+        ${styles[size]} 
+        ${disabled ? styles.disabled : ''} 
+        ${className}`}
       onClick={handleClick}
       disabled={disabled}
     >

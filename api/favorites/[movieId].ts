@@ -7,13 +7,18 @@ import { getUserFromRequest } from '@api/utils/auth-checker';
 
 export default async function handler(req: Request) {
   try {
-    if (req.method !== 'POST') return errorResponse('Method not allowed', 405);
+    if (req.method !== 'DELETE')
+      return errorResponse('Method not allowed', 405);
 
     const user = getUserFromRequest(req);
     if (!user) return errorResponse('Unauthorized', 401);
 
-    const { movieId } = await req.json();
-    if (!movieId) return errorResponse('movieId is required', 400);
+    const url = new URL(req.url);
+    const movieIdParam = url.pathname.split('/').pop();
+    const movieId = Number(movieIdParam);
+
+    if (!movieId || isNaN(movieId))
+      return errorResponse('Invalid movie ID', 400);
 
     const [existing] = await db
       .select()
@@ -22,21 +27,16 @@ export default async function handler(req: Request) {
         and(eq(favorites.userId, user.id), eq(favorites.movieId, movieId)),
       );
 
-    if (existing) return errorResponse('Movie already in favorites', 400);
+    if (!existing) return errorResponse('Favorite not found', 404);
 
-    const [newFavorite] = await db
-      .insert(favorites)
-      .values({
-        userId: user.id,
-        movieId,
-      })
-      .returning();
+    await db
+      .delete(favorites)
+      .where(
+        and(eq(favorites.userId, user.id), eq(favorites.movieId, movieId)),
+      );
 
-    return jsonResponse({
-      message: 'Movie added to favorites',
-      favorite: newFavorite,
-    });
+    return jsonResponse({ message: 'Favorite removed successfully' });
   } catch (err: unknown) {
-    return handleError(err, 'Add favorite failed');
+    return handleError(err, 'Remove favorite failed');
   }
 }

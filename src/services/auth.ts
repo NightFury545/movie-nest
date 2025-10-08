@@ -1,6 +1,6 @@
 import api from '@/lib/axios';
 import type { LoginData, RegisterData, AuthResponse } from '@/types/auth';
-import handleAxiosError from '@/utils/handleAxiosError';
+import handleAxiosError from '@/utils/axios-error-handler.ts';
 
 export async function login(data: LoginData): Promise<AuthResponse> {
   try {
