@@ -1,18 +1,12 @@
-import Button from '@/components/ui/Button';
+import styles from './home-page.module.css';
+import HeroSection from './HeroSection';
+import CategoriesSection from './CategoriesSection';
 
 const HomePage = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-      }}
-    >
-      <Button variant={'secondary'} size={'medium'}>
-        Переглянути
-      </Button>
+    <div className={styles.home}>
+      <HeroSection />
+      <CategoriesSection />
     </div>
   );
 };

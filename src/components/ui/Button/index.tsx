@@ -1,6 +1,7 @@
-import React, { useRef, useCallback } from 'react';
+import React from 'react';
 import styles from './button.module.css';
 import type { ButtonProps } from './button.types';
+import { useRipple } from '@/hooks/useRipple';
 
 const Button: React.FC<ButtonProps> = ({
   children,
@@ -10,50 +11,18 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   className,
 }) => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-
-  const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      if (disabled) return;
-      const button = buttonRef.current;
-      if (button) {
-        const circle = document.createElement('span');
-        const diameter = Math.max(button.clientWidth, button.clientHeight);
-        const radius = diameter / 2;
-        const rect = button.getBoundingClientRect();
-
-        circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.left = `${e.clientX - rect.left - radius}px`;
-        circle.style.top = `${e.clientY - rect.top - radius}px`;
-        circle.classList.add(styles.ripple);
-
-        const ripple = button.getElementsByClassName(styles.ripple)[0];
-        ripple?.remove();
-
-        button.appendChild(circle);
-
-        setTimeout(() => {
-          if (circle.parentElement === button) {
-            button.removeChild(circle);
-          }
-        }, 600);
-      }
-
-      onClick?.();
-    },
-    [disabled, onClick],
-  );
+  const { ref: rippleRef, handleClick } = useRipple();
 
   return (
     <button
-      ref={buttonRef}
+      ref={rippleRef}
       className={`
-        ${styles.button} 
-        ${styles[variant]} 
-        ${styles[size]} 
-        ${disabled ? styles.disabled : ''} 
-        ${className}`}
-      onClick={handleClick}
+      ${styles.button} 
+      ${styles[variant]} 
+      ${styles[size]} 
+      ${disabled ? styles.disabled : ''} 
+      ${className}`}
+      onClick={(e) => handleClick(e, onClick, disabled)}
       disabled={disabled}
     >
       {children}

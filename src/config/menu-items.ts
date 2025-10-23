@@ -3,19 +3,23 @@ import type { MenuItem } from '@/types';
 export const menuItems: MenuItem[] = [
   {
     label: 'Головна',
-    path: '/',
+    path: '/home',
   },
   {
     label: 'Фільми',
     path: '/movies',
   },
   {
-    label: 'Профіль',
-    path: '/profile',
-    private: true,
+    label: 'Колекції',
+    path: '/collections',
   },
   {
-    label: 'Про нас',
+    label: 'Улюблене',
+    path: '/favorites',
+    private: false,
+  },
+  {
+    label: 'FAQ',
     path: '/about',
   },
 ];
