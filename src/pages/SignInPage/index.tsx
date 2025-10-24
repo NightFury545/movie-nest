@@ -1,14 +1,13 @@
-import Button from '@/components/ui/Button';
+import SignInForm from '@/components/SignInForm';
+import styles from './signin-page.module.css';
 
 const SignInPage = () => {
-  const handleLogin = () => {};
-
   return (
-    <>
-      <Button variant={'primary'} size={'medium'} onClick={handleLogin}>
-        Увійти
-      </Button>
-    </>
+    <div className={styles['signin']}>
+      <div className={styles['signin__card']}>
+        <SignInForm />
+      </div>
+    </div>
   );
 };
 

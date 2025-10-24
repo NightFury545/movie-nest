@@ -1,0 +1,15 @@
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 124px;
+  padding: 160px 20px;
+  max-width: 880px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+@media (max-width: 820px) {
+  .features {
+    gap: 64px;
+  }
+}

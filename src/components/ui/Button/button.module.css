@@ -66,3 +66,14 @@
   outline: 2px solid var(--accent-primary);
   outline-offset: 3px;
 }
+.button__icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.1em;
+  margin-right: 6px;
+}
+
+.button__text {
+  display: inline-flex;
+  align-items: center;
+}

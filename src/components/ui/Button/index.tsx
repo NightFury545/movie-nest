@@ -10,6 +10,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   onClick,
   className,
+  icon,
 }) => {
   const { ref: rippleRef, handleClick } = useRipple();
 
@@ -25,7 +26,8 @@ const Button: React.FC<ButtonProps> = ({
       onClick={(e) => handleClick(e, onClick, disabled)}
       disabled={disabled}
     >
-      {children}
+      {icon && <span className={styles.button__icon}>{icon}</span>}
+      <span className={styles.button__text}>{children}</span>
     </button>
   );
 };

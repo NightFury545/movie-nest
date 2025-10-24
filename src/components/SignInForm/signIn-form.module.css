@@ -1,0 +1,96 @@
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+.signin-form__logo {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 4px rgba(138, 43, 226, 0.6));
+}
+
+.signin-form__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.signin-form__brand {
+  color: #0078ff;
+}
+
+.signin-form__subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.signin-form__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signin-form__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.9rem;
+  position: relative;
+  margin: 10px 0;
+}
+
+.signin-form__divider::before,
+.signin-form__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 0 10px;
+}
+
+.signin-form__social {
+  background-color: #1a1a1c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.signin-form__social:hover {
+  background-color: #222;
+}
+
+.signin-form__footer {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 16px;
+}
+
+.signin-form__link {
+  color: #0078ff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.signin-form__link:hover {
+  color: #339aff;
+}
+
+@media (max-width: 480px) {
+  .signin-form__form {
+    gap: 14px;
+  }
+
+  .signin-form__submit {
+    padding: 10px 0;
+  }
+
+  .signin-form__logo {
+    width: 42px;
+    height: 42px;
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import type { ReactNode } from 'react';
 
 export type ButtonVariant = 'primary' | 'secondary';
 export type ButtonSize = 'small' | 'medium' | 'large';
@@ -10,4 +11,5 @@ export interface ButtonProps {
   disabled?: boolean;
   onClick?: () => void;
   className?: string;
+  icon?: ReactNode;
 }
