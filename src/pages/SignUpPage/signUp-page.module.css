@@ -1,4 +1,4 @@
-.signin {
+.signup {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   padding: 20px;
 }
 
-.signin__card {
+.signup__card {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-primary);
   border-radius: var(--border-radius-lg);

@@ -1,0 +1,51 @@
+.slider {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  margin: 0 15px 0 15px;
+}
+
+.track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: #1a1a1a;
+  border-radius: 3px;
+  transform: translateY(-50%);
+}
+
+.range {
+  position: absolute;
+  top: 50%;
+  height: 6px;
+  background: #1e6be7;
+  border-radius: 3px;
+  transform: translateY(-50%);
+}
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  touch-action: none;
+}
+
+.thumb .handle {
+  width: 15px;
+  height: 15px;
+  background-color: #000;
+  border: 3px solid #1e6be7;
+  border-radius: 50%;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.thumb:active .handle {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(30, 107, 231, 0.6);
+}

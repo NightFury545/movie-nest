@@ -1,0 +1,130 @@
+.multi-select {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  font-family: inherit;
+  color: #fff;
+}
+
+.multi-select__control {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.multi-select__control:hover,
+.multi-select__control--open {
+  background-color: var(--accent-secondary-hover);
+}
+
+.multi-select__placeholder {
+  color: var(--text-secondary);
+  font-size: 14px;
+  user-select: none;
+}
+
+.multi-select__selected {
+  color: #fff;
+}
+
+.multi-select__icon {
+  transition: transform 0.25s ease;
+  color: var(--text-secondary);
+}
+
+.multi-select__icon--rotated {
+  transform: rotate(-180deg);
+}
+
+.multi-select__menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  overflow: hidden;
+  animation: fadeIn 0.15s ease;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+.multi-select__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.multi-select__option:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.multi-select__checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+  color: transparent;
+  flex-shrink: 0;
+}
+
+.multi-select__checkbox--checked {
+  background-color: #8a2be2;
+  border-color: #8a2be2;
+  color: #fff;
+  box-shadow: 0 0 6px rgba(138, 43, 226, 0.6);
+}
+
+.multi-select__label {
+  user-select: none;
+  flex: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .multi-select__control {
+    padding: 10px 14px;
+  }
+
+  .multi-select__option {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+}

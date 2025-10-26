@@ -16,7 +16,7 @@ const SignInForm = () => {
       </h2>
       <p className={styles['signin-form__subtitle']}>Поринь у світ фільмів</p>
 
-      <form className={styles['signin-form__form']}>
+      <div className={styles['signin-form__form']}>
         <Input type="email" label="Електронна адреса" />
         <Input type="password" label="Пароль" />
 
@@ -33,11 +33,11 @@ const SignInForm = () => {
         <Button icon={<FaGithub />} className={styles['signin-form__social']}>
           Увійти через GitHub
         </Button>
-      </form>
+      </div>
 
       <p className={styles['signin-form__footer']}>
-        Ще не маєш акаунту?{' '}
-        <Link to="/signup" className={styles['signin-form__link']}>
+        Ще немає акаунту?{' '}
+        <Link to="/sign-up" className={styles['signin-form__link']}>
           Зареєструватися
         </Link>
       </p>

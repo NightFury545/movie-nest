@@ -3,7 +3,7 @@ import type { MenuItem } from '@/types';
 export const menuItems: MenuItem[] = [
   {
     label: 'Головна',
-    path: '/home',
+    path: '/',
   },
   {
     label: 'Фільми',

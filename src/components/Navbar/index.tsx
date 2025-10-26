@@ -7,7 +7,7 @@ import { menuItems } from '@/config/menu-items';
 import SearchButton from '@/components/SearchButton';
 import styles from './navbar.module.css';
 import { Sun } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const { user } = useAuth();
@@ -37,14 +37,14 @@ const Navbar = () => {
     <header className={styles.navbar}>
       <div className={styles['navbar__container']}>
         <div className={styles['navbar__left']}>
-          <a href="/" className={styles['navbar__logo']}>
+          <Link to="/" className={styles['navbar__logo']}>
             <img
               src={logo}
               alt="MovieNest logo"
               className={styles['navbar__logo-image']}
             />
             <span className={styles['navbar__logo-text']}>MovieNest</span>
-          </a>
+          </Link>
 
           {/* --- Бургер для мобільних --- */}
           {isMobile && (
@@ -66,16 +66,16 @@ const Navbar = () => {
                 if (item.private && !user) return null;
                 const isActive = location.pathname === item.path;
                 return (
-                  <a
+                  <Link
                     key={item.path}
-                    href={item.path}
+                    to={item.path}
                     className={`${styles['navbar__item']} ${
                       isActive ? styles['navbar__item--active'] : ''
                     }`}
                     aria-current={isActive ? 'page' : undefined}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 );
               })}
             </nav>
@@ -96,9 +96,11 @@ const Navbar = () => {
           {user ? (
             <UserDropdown user={user} />
           ) : (
-            <Button variant="secondary" size="medium">
-              Увійти
-            </Button>
+            <Link to="/login">
+              <Button variant="secondary" size="medium">
+                Увійти
+              </Button>
+            </Link>
           )}
         </div>
       </div>
@@ -114,9 +116,9 @@ const Navbar = () => {
           if (item.private && !user) return null;
           const isActive = location.pathname === item.path;
           return (
-            <a
+            <Link
               key={item.path}
-              href={item.path}
+              to={item.path}
               className={`${styles['navbar__item']} ${
                 isActive ? styles['navbar__item--active'] : ''
               }`}
@@ -127,7 +129,7 @@ const Navbar = () => {
               aria-current={isActive ? 'page' : undefined}
             >
               {item.label}
-            </a>
+            </Link>
           );
         })}
       </nav>
