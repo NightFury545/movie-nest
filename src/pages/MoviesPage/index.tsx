@@ -37,8 +37,9 @@ const MoviesPage = () => {
           onChange={handleSearch}
         />
         <div className={styles['movies__list']}>
-          {mockMovies.map((movie) => (
+          {mockMovies.map((movie, i) => (
             <MovieCard
+              key={i}
               title={movie.title}
               imageUrl={movie.imageUrl}
               rating={movie.rating}
