@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import { signJwt } from '@api/lib/jwt';
 import { eq } from 'drizzle-orm';
 
-export default async function handler(req: Request) {
+async function handler(req: Request) {
   if (req.method !== 'POST') return errorResponse('Method not allowed', 405);
 
   try {
