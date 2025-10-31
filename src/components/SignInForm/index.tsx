@@ -1,6 +1,6 @@
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
-import styles from './signin-form.module.css';
+import styles from './signIn-form.module.css';
 import logo from '@/assets/movie-nest-logo.png';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
