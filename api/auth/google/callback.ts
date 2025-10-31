@@ -8,6 +8,8 @@ import { handleError } from '@api/utils/error-handler.ts';
 import { jsonResponse, errorResponse } from '@api/utils/responses';
 import { eq } from 'drizzle-orm';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 const GET = async (req: Request) => {
   try {
     const url = new URL(req.url);

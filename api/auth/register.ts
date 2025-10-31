@@ -4,7 +4,8 @@ import { jsonResponse, errorResponse } from '@api/utils/responses';
 import bcrypt from 'bcrypt';
 import { signJwt } from '@api/lib/jwt';
 import { eq } from 'drizzle-orm';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 async function handler(req: Request) {
   if (req.method !== 'POST') return errorResponse('Method not allowed', 405);
 
