@@ -1,18 +1,18 @@
 import React from 'react';
-import styles from './release-year.module.css';
+import styles from './rating.module.css';
 import { RangeSlider } from '@/components/ui/RangeSlider';
 
-interface ReleaseYearProps {
+interface RatingProps {
   value: [number, number];
   min?: number;
   max?: number;
   onChange: (value: [number, number]) => void;
 }
 
-export const ReleaseYear: React.FC<ReleaseYearProps> = ({
+export const Rating: React.FC<RatingProps> = ({
   value,
-  min = 1950,
-  max = 2025,
+  min = 0,
+  max = 10.0,
   onChange,
 }) => {
   const [localValue, setLocalValue] = React.useState<[number, number]>(value);
@@ -31,14 +31,14 @@ export const ReleaseYear: React.FC<ReleaseYearProps> = ({
 
   return (
     <div
-      className={styles['release-year']}
+      className={styles['rating']}
       onMouseUp={handleCommit}
       onTouchEnd={handleCommit}
     >
-      <span className={styles['release-year__title']}>Рік виходу</span>
+      <span className={styles['rating__title']}>Рейтинг</span>
 
-      <div className={styles['release-year__controls']}>
-        <span className={styles['release-year__value']}>{localValue[0]}</span>
+      <div className={styles['rating__controls']}>
+        <span className={styles['rating__value']}>{localValue[0]}</span>
 
         <RangeSlider
           min={min}
@@ -47,7 +47,7 @@ export const ReleaseYear: React.FC<ReleaseYearProps> = ({
           onChange={handleChange}
         />
 
-        <span className={styles['release-year__value']}>{localValue[1]}</span>
+        <span className={styles['rating__value']}>{localValue[1]}</span>
       </div>
     </div>
   );

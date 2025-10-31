@@ -1,4 +1,4 @@
-.original-language {
+.status {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-secondary);
   display: flex;
@@ -12,12 +12,12 @@
   box-sizing: border-box;
 }
 
-.original-language__title {
+.status__title {
   color: var(--text-secondary);
   font-size: 14px;
 }
 
-.original-language__list {
+.status__list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -25,26 +25,28 @@
   gap: 10px;
 }
 
-.original-language__list-item {
+.status__list-item {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 35px;
+  max-width: fit-content;
   height: 20px;
   border-radius: 2px;
   background-color: var(--accent-secondary);
   cursor: pointer;
+  padding: 0 6px;
+  box-sizing: border-box;
 }
 
-.original-language__text {
+.status__text {
   color: var(--text-third);
   font-size: 12px;
 }
 
-.original-language__list-item:hover {
+.status__list-item:hover {
   background-color: #08081c;
 }
 
-.original-language__list-item--active {
+.status__list-item--active {
   background-color: #08081c;
 }

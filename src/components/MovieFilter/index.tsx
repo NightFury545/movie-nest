@@ -1,55 +1,85 @@
 import styles from './movie-filter.module.css';
 import MultiSelect from '@/components/ui/MultiSelect';
-import { movieGenres, movieSortBy } from '@/data/movie-filter.ts';
 import Select from '@/components/ui/Select';
 import { ReleaseYear } from '@/components/MovieFilter/ReleaseYear';
-import { useQueryStates } from 'nuqs';
+import OriginalLanguage from '@/components/MovieFilter/OriginalLanguage';
+import { Duration } from '@/components/MovieFilter/Duration';
+import { Rating } from '@/components/MovieFilter/Rating';
+import Status from '@/components/MovieFilter/Status';
+import {
+  movieGenres,
+  movieLanguages,
+  movieSortBy,
+  ageRatings,
+  productionCountries,
+  movieStatuses,
+} from '@/data/movie-filter.ts';
 
-const MovieFilter = () => {
-  const [{ genres, sortBy, releaseYear }, setQuery] = useQueryStates({
-    genres: {
-      defaultValue: [] as string[],
-      parse: (value) => value?.split(',').filter(Boolean) ?? [],
-      serialize: (value) => value.join(','),
-      clearOnDefault: true,
-    },
-    sortBy: {
-      defaultValue: null as string | null,
-      parse: (value) => value ?? null,
-      serialize: (value) => value ?? '',
-      clearOnDefault: true,
-    },
-    releaseYear: {
-      defaultValue: [1950, 2025] as [number, number],
-      parse: (value) => {
-        if (!value) return [1950, 2025];
-        const parts = value.split('-').map(Number);
-        return parts.length === 2 ? [parts[0], parts[1]] : [1950, 2025];
-      },
-      serialize: (value) => `${value[0]}-${value[1]}`,
-      clearOnDefault: true,
-    },
-  });
+interface MovieFilterProps {
+  filters: {
+    genres: string[];
+    sortBy: string;
+    releaseYear: [number, number];
+    languages: string[];
+    duration: [number, number];
+    ageRestrictions: string[];
+    rating: [number, number];
+    productionCountries: string[];
+    status: string[];
+  };
+  onChange: (newFilters: Partial<MovieFilterProps['filters']>) => void;
+}
 
+const MovieFilter = ({ filters, onChange }: MovieFilterProps) => {
   return (
     <aside className={styles['movie-filter']}>
       <MultiSelect
         placeholder="Обрати жанри..."
         options={movieGenres}
-        defaultValue={genres}
-        onChange={(value) => setQuery({ genres: value })}
+        defaultValue={filters.genres}
+        onChange={(v) => onChange({ genres: v })}
       />
 
       <Select
         placeholder="Сортувати за..."
         options={movieSortBy}
-        defaultValue={sortBy ?? ''}
-        onChange={(value) => setQuery({ sortBy: value })}
+        defaultValue={filters.sortBy}
+        onChange={(v) => onChange({ sortBy: v })}
       />
 
       <ReleaseYear
-        value={releaseYear}
-        onChange={(value) => setQuery({ releaseYear: value })}
+        value={filters.releaseYear}
+        onChange={(v) => onChange({ releaseYear: v })}
+      />
+      <OriginalLanguage
+        value={filters.languages}
+        options={movieLanguages}
+        onChange={(v) => onChange({ languages: v })}
+      />
+      <Duration
+        value={filters.duration}
+        onChange={(v) => onChange({ duration: v })}
+      />
+      <MultiSelect
+        placeholder="Вікові обмеження"
+        options={ageRatings}
+        defaultValue={filters.ageRestrictions}
+        onChange={(v) => onChange({ ageRestrictions: v })}
+      />
+      <Rating
+        value={filters.rating}
+        onChange={(v) => onChange({ rating: v })}
+      />
+      <MultiSelect
+        placeholder="Країна виробництва"
+        options={productionCountries}
+        defaultValue={filters.productionCountries}
+        onChange={(v) => onChange({ productionCountries: v })}
+      />
+      <Status
+        value={filters.status}
+        options={movieStatuses}
+        onChange={(v) => onChange({ status: v })}
       />
     </aside>
   );
