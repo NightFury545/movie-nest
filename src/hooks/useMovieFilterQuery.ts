@@ -33,7 +33,7 @@ export const useMovieFilterQuery = () => {
     genres: {
       defaultValue: [] as string[],
       parse: parseList,
-      serialize: serializeList,
+      serialize: serializeList as (value: string[]) => string,
     },
     sortBy: {
       defaultValue: null as string | null,
@@ -43,47 +43,53 @@ export const useMovieFilterQuery = () => {
     releaseYear: {
       defaultValue: DEFAULTS.releaseYear,
       parse: (v) => parseRange(v, 1950, 2025, DEFAULTS.releaseYear),
-      serialize: (v) => serializeRange(v, DEFAULTS.releaseYear),
+      serialize: ((v) => serializeRange(v, DEFAULTS.releaseYear)) as (
+        v: [number, number],
+      ) => string,
     },
     languages: {
       defaultValue: [] as string[],
       parse: parseList,
-      serialize: serializeList,
+      serialize: serializeList as (value: string[]) => string,
     },
     duration: {
       defaultValue: DEFAULTS.duration,
       parse: (v) => parseRange(v, 0, 360, DEFAULTS.duration),
-      serialize: (v) => serializeRange(v, DEFAULTS.duration),
+      serialize: ((v) => serializeRange(v, DEFAULTS.duration)) as (
+        v: [number, number],
+      ) => string,
     },
     rating: {
       defaultValue: DEFAULTS.rating,
       parse: (v) => parseRange(v, 0, 10, DEFAULTS.rating),
-      serialize: (v) => serializeRange(v, DEFAULTS.rating),
+      serialize: ((v) => serializeRange(v, DEFAULTS.rating)) as (
+        v: [number, number],
+      ) => string,
     },
     ageRestrictions: {
       defaultValue: [] as string[],
       parse: parseList,
-      serialize: serializeList,
+      serialize: serializeList as (value: string[]) => string,
     },
     productionCountries: {
       defaultValue: [] as string[],
       parse: parseList,
-      serialize: serializeList,
+      serialize: serializeList as (value: string[]) => string,
     },
     status: {
       defaultValue: [] as string[],
       parse: parseList,
-      serialize: serializeList,
+      serialize: serializeList as (value: string[]) => string,
     },
     page: {
       defaultValue: 1,
       parse: (v) => (v ? Number(v) : 1),
-      serialize: (v) => (v > 1 ? String(v) : null),
+      serialize: ((v) => (v > 1 ? String(v) : null)) as (v: number) => string,
     },
     search: {
       defaultValue: '',
       parse: (v) => v ?? '',
-      serialize: (v) => (v ? v : null),
+      serialize: ((v) => (v ? v : null)) as (v: string) => string,
     },
   });
 };
