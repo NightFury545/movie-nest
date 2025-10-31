@@ -36,8 +36,8 @@ export const useMovieFilterQuery = () => {
       serialize: serializeList as (value: string[]) => string,
     },
     sortBy: {
-      defaultValue: null as string | null,
-      parse: (v) => v ?? null,
+      defaultValue: '',
+      parse: (v) => v ?? '',
       serialize: (v) => (v ? v : null),
     },
     releaseYear: {
