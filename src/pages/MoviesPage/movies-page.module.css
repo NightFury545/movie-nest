@@ -2,8 +2,14 @@
   display: flex;
   align-items: flex-start;
   gap: 25px;
-  padding: 60px 8%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 60px 20px;
   box-sizing: border-box;
+}
+
+.movies__filter-bar {
+  display: block;
 }
 
 .movies__container {
@@ -14,11 +20,21 @@
   min-width: 0;
 }
 
-.movies__list {
+.movies__mobile-filter-bar {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movies__mobile-filter-button {
+  display: none;
+}
+
+.movies__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(113px, 1fr));
   gap: 25px;
-  justify-content: flex-start;
+  width: 100%;
 }
 
 .movies__pagination {
@@ -26,4 +42,74 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.movies__mobile-filter-panel {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  height: 90vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(40px);
+  color: #fff;
+  padding: 20px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  transition: bottom 0.4s ease;
+  z-index: 1001;
+  overflow-y: auto;
+}
+
+.movies__mobile-filter-panel::-webkit-scrollbar {
+  display: none;
+}
+
+.movies__mobile-filter-panel--open {
+  bottom: 0;
+}
+
+.movies__mobile-filter-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
+
+.movies__mobile-filter-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.movies__mobile-filter-backdrop--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.movies__mobile-filter {
+  max-width: 100%;
+}
+
+@media (min-width: 931px) {
+  .movies__mobile-filter-panel,
+  .movies__mobile-filter-backdrop {
+    display: none;
+  }
+}
+
+@media (max-width: 930px) {
+  .movies__mobile-filter-button {
+    display: block;
+  }
+
+  .movies__filter-bar {
+    display: none;
+  }
 }

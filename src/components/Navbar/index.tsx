@@ -14,10 +14,15 @@ const Navbar = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const [activeLabel, setActiveLabel] = useState(menuItems[0].label);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 992);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 992);
+      setIsDesktop(window.innerWidth <= 1160);
+    };
+
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -91,7 +96,8 @@ const Navbar = () => {
             <Sun size={18} />
           </button>
 
-          <SearchButton variant={isMobile ? 'icon' : 'full'} />
+          {/* --- Тепер зміна вигляду кнопки пошуку залежно від ширини --- */}
+          <SearchButton variant={isMobile || isDesktop ? 'icon' : 'full'} />
 
           {user ? (
             <UserDropdown user={user} />

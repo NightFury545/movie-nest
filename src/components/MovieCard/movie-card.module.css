@@ -4,7 +4,6 @@
   background: transparent;
   color: #fff;
   width: 100%;
-  max-width: 130px;
   max-height: 230px;
   cursor: pointer;
   box-sizing: border-box;
@@ -66,17 +65,7 @@
   font-size: 0.75rem;
 }
 
-@media (max-width: 768px) {
-  .movie-card {
-    max-width: 45%;
-  }
-}
-
 @media (max-width: 480px) {
-  .movie-card {
-    max-width: 48%;
-  }
-
   .movie-card__title {
     font-size: 0.85rem;
   }

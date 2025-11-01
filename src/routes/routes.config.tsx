@@ -4,6 +4,7 @@ import ProfilePage from '@/pages/ProfilePage';
 import React from 'react';
 import SignUpPage from '@/pages/SignUpPage';
 import MoviesPage from '@/pages/MoviesPage';
+import MovieDetailsPage from '@/pages/MovieDetailsPage';
 
 export interface RouteConfig {
   path: string;
@@ -16,5 +17,6 @@ export const routes: RouteConfig[] = [
   { path: '/login', element: <LoginPage /> },
   { path: '/sign-up', element: <SignUpPage /> },
   { path: '/movies', element: <MoviesPage /> },
+  { path: '/movies/:slug', element: <MovieDetailsPage /> },
   { path: '/profile', element: <ProfilePage />, private: true },
 ];

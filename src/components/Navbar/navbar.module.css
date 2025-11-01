@@ -134,6 +134,10 @@
   .navbar__container {
     padding: 8px 32px;
   }
+
+  .navbar__left {
+    gap: 20px;
+  }
 }
 
 @media (max-width: 768px) {

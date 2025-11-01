@@ -3,4 +3,5 @@ export interface MovieCardProps {
   imageUrl: string;
   rating: number;
   releaseYear: number;
+  slug: string;
 }

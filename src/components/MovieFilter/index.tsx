@@ -28,11 +28,14 @@ interface MovieFilterProps {
     status: string[];
   };
   onChange: (newFilters: Partial<MovieFilterProps['filters']>) => void;
+  className?: string;
 }
 
-const MovieFilter = ({ filters, onChange }: MovieFilterProps) => {
+const MovieFilter = ({ filters, onChange, className }: MovieFilterProps) => {
   return (
-    <aside className={styles['movie-filter']}>
+    <aside
+      className={`${styles['movie-filter']} ${className ? className : ''}`}
+    >
       <MultiSelect
         placeholder="Обрати жанри..."
         options={movieGenres}
