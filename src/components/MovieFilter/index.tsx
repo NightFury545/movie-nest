@@ -14,24 +14,14 @@ import {
   productionCountries,
   movieStatuses,
 } from '@/data/movie-filter.ts';
+import type { MovieFilterProps } from '@/components/MovieFilter/movie-filter.types.ts';
+import React from 'react';
 
-interface MovieFilterProps {
-  filters: {
-    genres: string[];
-    sortBy: string;
-    releaseYear: [number, number];
-    languages: string[];
-    duration: [number, number];
-    ageRestrictions: string[];
-    rating: [number, number];
-    productionCountries: string[];
-    status: string[];
-  };
-  onChange: (newFilters: Partial<MovieFilterProps['filters']>) => void;
-  className?: string;
-}
-
-const MovieFilter = ({ filters, onChange, className }: MovieFilterProps) => {
+const MovieFilter: React.FC<MovieFilterProps> = ({
+  filters,
+  onChange,
+  className,
+}) => {
   return (
     <aside
       className={`${styles['movie-filter']} ${className ? className : ''}`}

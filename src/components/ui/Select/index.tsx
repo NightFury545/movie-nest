@@ -1,18 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './select.module.css';
 import { ChevronDown } from 'lucide-react';
-
-interface Option {
-  label: string;
-  value: string;
-}
-
-interface SelectProps {
-  options: Option[];
-  placeholder?: string;
-  onChange?: (value: string) => void;
-  defaultValue?: string;
-}
+import type { SelectProps } from '@/components/ui/Select/select.types.ts';
 
 const Select: React.FC<SelectProps> = ({
   options,

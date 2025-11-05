@@ -1,11 +1,6 @@
 import styles from './original-language.module.css';
 import React, { useState } from 'react';
-
-interface OriginalLanguageProps {
-  value: string[];
-  options: string[];
-  onChange?: (value: string[]) => void;
-}
+import type { OriginalLanguageProps } from '@/components/MovieFilter/OriginalLanguage/original-language.types.ts';
 
 const OriginalLanguage: React.FC<OriginalLanguageProps> = ({
   value,

@@ -1,11 +1,8 @@
 import styles from './category-card.module.css';
+import type { CategoryCardProps } from '@/pages/HomePage/CategoriesSection/CategoryCard/category-card.types.ts';
+import React from 'react';
 
-interface CategoryCardProps {
-  title: string;
-  movies: { image: string }[];
-}
-
-const CategoryCard = ({ title, movies }: CategoryCardProps) => {
+const CategoryCard: React.FC<CategoryCardProps> = ({ title, movies }) => {
   return (
     <div className={styles['category-card']}>
       <div className={styles['category-card__images']}>

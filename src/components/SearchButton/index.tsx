@@ -1,20 +1,15 @@
 import { Search } from 'lucide-react';
 import styles from './search-button.module.css';
 import { useRipple } from '@/hooks/useRipple';
+import type { SearchButtonProps } from '@/components/SearchButton/search-button.types.ts';
+import React from 'react';
 
-interface SearchButtonProps {
-  onClick?: () => void;
-  variant?: 'full' | 'icon';
-  className?: string;
-  disabled?: boolean;
-}
-
-export default function SearchButton({
+const SearchButton: React.FC<SearchButtonProps> = ({
   onClick,
   variant = 'full',
   className = '',
   disabled = false,
-}: SearchButtonProps) {
+}) => {
   const { ref: rippleRef, handleClick } = useRipple();
 
   return (
@@ -33,4 +28,6 @@ export default function SearchButton({
       )}
     </button>
   );
-}
+};
+
+export default SearchButton;

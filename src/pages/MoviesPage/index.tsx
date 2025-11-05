@@ -15,6 +15,18 @@ const MoviesPage = () => {
   const [isFilterOpen, setFilterOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  const filters = {
+    genres: query.genres,
+    sortBy: query.sortBy,
+    releaseYear: query.releaseYear,
+    languages: query.languages,
+    duration: query.duration,
+    ageRestrictions: query.ageRestrictions,
+    rating: query.rating,
+    productionCountries: query.productionCountries,
+    status: query.status,
+  };
+
   const handleSearch = debounce((v: string) => {
     void setQuery({ search: v });
   }, 500);
@@ -31,20 +43,7 @@ const MoviesPage = () => {
   return (
     <div className={styles['movies']}>
       <div className={styles['movies__filter-bar']}>
-        <MovieFilter
-          filters={{
-            genres: query.genres,
-            sortBy: query.sortBy,
-            releaseYear: query.releaseYear,
-            languages: query.languages,
-            duration: query.duration,
-            ageRestrictions: query.ageRestrictions,
-            rating: query.rating,
-            productionCountries: query.productionCountries,
-            status: query.status,
-          }}
-          onChange={setQuery}
-        />
+        <MovieFilter filters={filters} onChange={setQuery} />
       </div>
       <div className={styles['movies__container']}>
         <div className={styles['movies__mobile-filter-bar']}>
@@ -97,17 +96,7 @@ const MoviesPage = () => {
           </Button>
         </div>
         <MovieFilter
-          filters={{
-            genres: query.genres,
-            sortBy: query.sortBy,
-            releaseYear: query.releaseYear,
-            languages: query.languages,
-            duration: query.duration,
-            ageRestrictions: query.ageRestrictions,
-            rating: query.rating,
-            productionCountries: query.productionCountries,
-            status: query.status,
-          }}
+          filters={filters}
           onChange={setQuery}
           className={styles['movies__mobile-filter']}
         />

@@ -1,16 +1,6 @@
 import styles from './status.module.css';
 import React, { useState } from 'react';
-
-interface Option {
-  value: string;
-  label: string;
-}
-
-interface StatusProps {
-  value: string[];
-  options: Option[];
-  onChange?: (value: string[]) => void;
-}
+import type { StatusProps } from '@/components/MovieFilter/Status/status.types.ts';
 
 const Status: React.FC<StatusProps> = ({ value, options, onChange }) => {
   const [selected, setSelected] = useState<string[]>(value);

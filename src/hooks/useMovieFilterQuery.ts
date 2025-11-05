@@ -1,4 +1,5 @@
 import { useQueryStates } from 'nuqs';
+import { parseRange } from '@/utils/parsers.ts';
 
 const DEFAULTS = {
   releaseYear: [1950, 2025] as [number, number],
@@ -11,19 +12,6 @@ const parseList = (value: string | null) =>
 
 const serializeList = (value: string[]) =>
   value.length > 0 ? value.join(',') : null;
-
-const parseRange = (
-  value: string | null,
-  min: number,
-  max: number,
-  def: [number, number],
-): [number, number] => {
-  if (!value) return def;
-  const parts = value.split('-').map(Number);
-  if (parts.length !== 2) return def;
-  const [start, end] = parts;
-  return start < min || end > max || start > end ? def : [start, end];
-};
 
 const serializeRange = (value: [number, number], def: [number, number]) =>
   value[0] === def[0] && value[1] === def[1] ? null : `${value[0]}-${value[1]}`;

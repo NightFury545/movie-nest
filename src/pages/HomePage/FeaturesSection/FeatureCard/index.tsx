@@ -1,21 +1,14 @@
 import styles from './feature-card.module.css';
-import type { LucideIcon } from 'lucide-react';
+import type { FeatureCardProps } from '@/pages/HomePage/FeaturesSection/FeatureCard/feature-card.types.ts';
+import React from 'react';
 
-interface FeatureCardProps {
-  title: string;
-  text: string;
-  image: string;
-  icons: LucideIcon[];
-  reverse?: boolean;
-}
-
-const FeatureCard = ({
+const FeatureCard: React.FunctionComponent<FeatureCardProps> = ({
   title,
   text,
   image,
   icons,
   reverse = false,
-}: FeatureCardProps) => {
+}) => {
   return (
     <div
       className={`${styles['feature-card']} ${reverse ? styles['feature-card--reverse'] : ''}`}

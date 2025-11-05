@@ -29,8 +29,10 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const currentItem = menuItems.find(
-      (item) => item.path === location.pathname,
+    const currentItem = menuItems.find((item) =>
+      item.path === '/'
+        ? location.pathname === '/'
+        : location.pathname.startsWith(item.path),
     );
     if (currentItem) setActiveLabel(currentItem.label);
   }, [location.pathname]);
@@ -50,8 +52,6 @@ const Navbar = () => {
             />
             <span className={styles['navbar__logo-text']}>MovieNest</span>
           </Link>
-
-          {/* --- Бургер для мобільних --- */}
           {isMobile && (
             <button
               className={styles['navbar__burger']}
@@ -63,13 +63,14 @@ const Navbar = () => {
               {activeLabel}
             </button>
           )}
-
-          {/* --- Меню для ПК --- */}
           {!isMobile && (
             <nav className={styles['navbar__menu']}>
               {menuItems.map((item) => {
                 if (item.private && !user) return null;
-                const isActive = location.pathname === item.path;
+                const isActive =
+                  item.path === '/'
+                    ? location.pathname === '/'
+                    : location.pathname.startsWith(item.path);
                 return (
                   <Link
                     key={item.path}
@@ -86,7 +87,6 @@ const Navbar = () => {
             </nav>
           )}
         </div>
-
         <div className={styles['navbar__right']}>
           <button
             className={styles['navbar__theme-toggle']}
@@ -95,10 +95,7 @@ const Navbar = () => {
           >
             <Sun size={18} />
           </button>
-
-          {/* --- Тепер зміна вигляду кнопки пошуку залежно від ширини --- */}
           <SearchButton variant={isMobile || isDesktop ? 'icon' : 'full'} />
-
           {user ? (
             <UserDropdown user={user} />
           ) : (
@@ -110,8 +107,6 @@ const Navbar = () => {
           )}
         </div>
       </div>
-
-      {/* --- Мобільне меню --- */}
       <nav
         className={`${styles['navbar__menu-mobile']} ${
           menuOpen ? styles['navbar__menu-mobile--open'] : ''
@@ -139,7 +134,6 @@ const Navbar = () => {
           );
         })}
       </nav>
-
       {menuOpen && (
         <div
           className={styles['navbar__overlay']}

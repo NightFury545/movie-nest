@@ -5,7 +5,7 @@ import FeaturesSection from '@/pages/HomePage/FeaturesSection';
 
 const HomePage = () => {
   return (
-    <div className={styles.home}>
+    <div className={styles['home']}>
       <HeroSection />
       <CategoriesSection />
       <FeaturesSection />

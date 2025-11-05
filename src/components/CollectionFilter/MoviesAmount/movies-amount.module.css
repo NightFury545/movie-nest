@@ -1,0 +1,43 @@
+.movies-amount {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 14px;
+  padding: 14px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-sizing: border-box;
+}
+
+.movies-amount__title {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.movies-amount__controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.movies-amount__value {
+  background: var(--accent-secondary);
+  padding: 4px 10px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  max-width: 24px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .movies-amount {
+    padding: 16px;
+  }
+
+  .movies-amount__value {
+    font-size: 13px;
+  }
+}

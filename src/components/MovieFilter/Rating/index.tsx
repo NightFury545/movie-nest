@@ -1,13 +1,7 @@
 import React from 'react';
 import styles from './rating.module.css';
 import { RangeSlider } from '@/components/ui/RangeSlider';
-
-interface RatingProps {
-  value: [number, number];
-  min?: number;
-  max?: number;
-  onChange: (value: [number, number]) => void;
-}
+import type { RatingProps } from '@/components/MovieFilter/Rating/rating.types.ts';
 
 export const Rating: React.FC<RatingProps> = ({
   value,

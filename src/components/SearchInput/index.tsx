@@ -1,24 +1,17 @@
 import { Search } from 'lucide-react';
 import styles from './search-input.module.css';
 import React, { useState } from 'react';
+import type { SearchInputProps } from '@/components/SearchInput/search-input.types.ts';
 
-interface SearchInputProps {
-  value?: string;
-  placeholder?: string;
-  onChange?: (value: string) => void;
-  onSubmit?: (value: string) => void;
-  disabled?: boolean;
-  className?: string;
-}
-
-export default function SearchInput({
+const SearchInput: React.FC<SearchInputProps> = ({
   value = '',
   placeholder = 'Пошук...',
   onChange,
   onSubmit,
   disabled = false,
   className = '',
-}: SearchInputProps) {
+  icon,
+}) => {
   const [text, setText] = useState(value);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +28,9 @@ export default function SearchInput({
 
   return (
     <div className={`${styles['search-input']} ${className}`}>
-      <Search className={styles['search-input__icon']} size={18} />
+      <div className={styles['search-input__icon']}>
+        {icon ?? <Search size={18} />}
+      </div>
       <input
         type="text"
         value={text}
@@ -48,4 +43,6 @@ export default function SearchInput({
       />
     </div>
   );
-}
+};
+
+export default SearchInput;

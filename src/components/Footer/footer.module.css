@@ -131,9 +131,8 @@
 
 @media (max-width: 375px) {
   .footer__columns {
-    grid-template-columns: 1fr;
     text-align: center;
-    gap: 28px;
+    gap: 25px;
   }
 
   .footer__column {
@@ -142,5 +141,9 @@
 
   .footer__bottom {
     text-align: center;
+  }
+
+  .footer__container {
+    padding: 0 25px;
   }
 }

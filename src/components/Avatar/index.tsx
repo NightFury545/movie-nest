@@ -1,14 +1,13 @@
 import { DEFAULT_AVATAR } from '@/config/constants.ts';
+import styles from './avatar.module.css';
+import type { AvatarProps } from '@/components/Avatar/avatar.types.ts';
+import React from 'react';
 
-interface AvatarProps {
-  avatar_url?: string;
-}
-
-const Avatar = ({ avatar_url }: AvatarProps) => {
+const Avatar: React.FC<AvatarProps> = ({ avatar_url }) => {
   return (
-    <div className="avatar">
+    <div className={styles['avatar']}>
       <img
-        className="avatar__image"
+        className={styles['avatar__image']}
         src={avatar_url || DEFAULT_AVATAR}
         alt="User avatar"
       />

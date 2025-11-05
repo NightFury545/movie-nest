@@ -1,13 +1,7 @@
 import React from 'react';
 import styles from './release-year.module.css';
 import { RangeSlider } from '@/components/ui/RangeSlider';
-
-interface ReleaseYearProps {
-  value: [number, number];
-  min?: number;
-  max?: number;
-  onChange: (value: [number, number]) => void;
-}
+import type { ReleaseYearProps } from '@/components/MovieFilter/ReleaseYear/release-year.types.ts';
 
 export const ReleaseYear: React.FC<ReleaseYearProps> = ({
   value,

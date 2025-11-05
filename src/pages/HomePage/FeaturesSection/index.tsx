@@ -4,7 +4,7 @@ import { features } from '@/data/home-page.ts';
 
 const FeaturesSection = () => {
   return (
-    <section className={styles.features}>
+    <section className={styles['features']}>
       {features.map((feature, idx) => (
         <FeatureCard key={idx} {...feature} reverse={idx % 2 === 1} />
       ))}

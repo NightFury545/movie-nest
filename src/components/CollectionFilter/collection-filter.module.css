@@ -1,0 +1,11 @@
+.collection-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  min-height: 100vh;
+  height: fit-content;
+  gap: 12px;
+}

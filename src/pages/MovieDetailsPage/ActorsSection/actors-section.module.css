@@ -1,0 +1,35 @@
+.actors-section {
+  width: 100%;
+  padding: 40px 60px;
+  color: #fff;
+  box-sizing: border-box;
+  margin-bottom: 48px;
+}
+
+.actors-section__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.actors-section__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .actors-section {
+    padding: 24px 20px;
+  }
+
+  .actors-section__title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .actors-section__grid {
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}

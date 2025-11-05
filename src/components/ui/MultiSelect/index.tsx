@@ -1,18 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './multi-select.module.css';
 import { ChevronDown } from 'lucide-react';
-
-interface Option {
-  label: string;
-  value: string;
-}
-
-interface MultiSelectProps {
-  options: Option[];
-  placeholder?: string;
-  onChange?: (selected: string[]) => void;
-  defaultValue?: string[];
-}
+import type { MultiSelectProps } from '@/components/ui/MultiSelect/multi-select.types.ts';
 
 const MultiSelect: React.FC<MultiSelectProps> = ({
   options,

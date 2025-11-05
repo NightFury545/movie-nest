@@ -1,13 +1,7 @@
 import React from 'react';
 import styles from './duration.module.css';
 import { RangeSlider } from '@/components/ui/RangeSlider';
-
-interface DurationProps {
-  value: [number, number];
-  min?: number;
-  max?: number;
-  onChange: (value: [number, number]) => void;
-}
+import type { DurationProps } from '@/components/MovieFilter/Duration/duration.types.ts';
 
 export const Duration: React.FC<DurationProps> = ({
   value,

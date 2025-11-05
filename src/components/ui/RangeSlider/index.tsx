@@ -1,13 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import styles from './range-slider.module.css';
-
-interface RangeSliderProps {
-  min?: number;
-  max?: number;
-  step?: number;
-  value?: [number, number];
-  onChange?: (value: [number, number]) => void;
-}
+import type { RangeSliderProps } from '@/components/ui/RangeSlider/range-slider.types.ts';
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
   min = 0,
