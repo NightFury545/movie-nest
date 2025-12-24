@@ -1,7 +1,7 @@
 export interface MovieCardProps {
   title: string;
-  imageUrl: string;
-  rating: number;
-  releaseYear: number;
   slug: string;
+  imageUrl?: string;
+  rating?: number;
+  releaseDate?: string;
 }

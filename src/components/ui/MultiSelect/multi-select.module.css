@@ -55,9 +55,19 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
   z-index: 100;
   overflow: hidden;
+  overflow-y: auto;
   animation: fadeIn 0.15s ease;
   padding: 6px;
   box-sizing: border-box;
+}
+
+.multi-select__menu::-webkit-scrollbar {
+  display: none;
+}
+
+.multi-select__menu {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .multi-select__option {

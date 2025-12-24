@@ -11,12 +11,13 @@ export interface RouteConfig {
   path: string;
   element: React.ReactNode;
   private?: boolean;
+  guestOnly?: boolean;
 }
 
 export const routes: RouteConfig[] = [
   { path: '/', element: <HomePage /> },
-  { path: '/login', element: <LoginPage /> },
-  { path: '/sign-up', element: <SignUpPage /> },
+  { path: '/login', element: <LoginPage />, guestOnly: true },
+  { path: '/sign-up', element: <SignUpPage />, guestOnly: true },
   { path: '/movies', element: <MoviesPage /> },
   { path: '/movies/:slug', element: <MovieDetailsPage /> },
   { path: '/collections', element: <CollectionsPage /> },

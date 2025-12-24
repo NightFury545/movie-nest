@@ -1,9 +1,5 @@
-export interface Genre {
-  title: string;
-  description: string;
-  iconUrl?: string;
-}
+import type { Genre } from '@/types/genre.ts';
 
 export interface GenresSectionProps {
-  genres: Genre[];
+  genres?: Genre[];
 }

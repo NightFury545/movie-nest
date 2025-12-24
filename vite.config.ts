@@ -8,8 +8,15 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@db': path.resolve(__dirname, './db'),
-      '@api': path.resolve(__dirname, './api'),
+    },
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:8788',
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 });

@@ -1,0 +1,2 @@
+ALTER TABLE "favorites" ALTER COLUMN "movie_id" SET DATA TYPE uuid;--> statement-breakpoint
+ALTER TABLE "favorites" ADD CONSTRAINT "favorites_movie_id_movies_id_fk" FOREIGN KEY ("movie_id") REFERENCES "public"."movies"("id") ON DELETE cascade ON UPDATE no action;

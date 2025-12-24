@@ -1,50 +1,18 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { removeFavorite } from '@/services/favorites';
-import type { Favorite } from '@/types/favorites';
-import type { PaginatedResponse } from '@/types/api';
+import { FAVORITES_QUERY_KEY } from '@/config/constants';
 
-export function useRemoveFavorite(limit = 10, sort: 'asc' | 'desc' = 'desc') {
+export function useRemoveFavorite() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (movieId: number) => removeFavorite(movieId),
-
-    onMutate: async (movieId: number) => {
-      const queryKey = ['favorites', limit, sort];
-      await queryClient.cancelQueries({ queryKey });
-
-      const prevData = queryClient.getQueryData<{
-        pages: PaginatedResponse<Favorite>[];
-        pageParams: number[];
-      }>(queryKey);
-
-      if (prevData) {
-        queryClient.setQueryData(queryKey, {
-          ...prevData,
-          pages: prevData.pages.map((page) => ({
-            ...page,
-            data: page.data.filter((fav) => fav.movieId !== movieId),
-            pagination: {
-              ...page.pagination,
-              total: page.pagination.total - 1,
-            },
-          })),
-        });
-      }
-
-      return { prevData };
-    },
-
-    onError: (_err, _movieId, context) => {
-      if (context?.prevData) {
-        queryClient.setQueryData(['favorites', limit, sort], context.prevData);
-      }
-    },
-
-    onSettled: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: ['favorites', limit, sort],
-      });
+    mutationFn: (movieId: string) => removeFavorite(movieId),
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: [FAVORITES_QUERY_KEY],
+      }),
+    onError: (error) => {
+      console.error(error.message);
     },
   });
 }

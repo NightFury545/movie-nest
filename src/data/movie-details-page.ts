@@ -1,24 +1,51 @@
-export const movieGenres = [
+export const MOVIE_GENRES_META = [
   {
-    title: 'Бойовик',
+    originalTitle: 'Fantasy',
+    title: 'Фентезі',
     description:
-      'Жанр, де події насичені битвами, сутичками та динамічними сценами.',
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/3062/3062634.png',
+      'Світ, наповнений магією, міфічними істотами та надприродними силами.',
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/18137/18137203.png',
   },
   {
+    originalTitle: 'Shooter',
+    title: 'Шутер',
+    description:
+      'Динамічний жанр з акцентом на вогнепальну зброю та бойові дії.',
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/6694/6694984.png',
+  },
+  {
+    originalTitle: 'Thriller',
+    title: 'Трилер',
+    description:
+      'Напружений сюжет, несподівані повороти та постійне відчуття небезпеки.',
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/12355/12355779.png',
+  },
+  {
+    originalTitle: 'Crime',
+    title: 'Кримінал',
+    description:
+      'Історії про злочини, мафію, розслідування та темну сторону суспільства.',
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/18622/18622649.png',
+  },
+  {
+    originalTitle: 'Adventure',
+    title: 'Пригоди',
+    description: 'Подорожі, відкриття нових світів та захопливі пригоди.',
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/201/201623.png',
+  },
+  {
+    originalTitle: 'Horror',
+    title: 'Жахи',
+    description:
+      'Жанр, покликаний лякати, тримати в напрузі та викликати страх.',
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/8602/8602728.png',
+  },
+  {
+    originalTitle: 'Drama',
     title: 'Драма',
     description:
-      'Психологічний конфлікт, переживання і складні відносини між героями.',
-  },
-  {
-    title: 'Фентезі',
-    description: 'Світ, наповнений магією, драконами й стародавніми силами.',
-  },
-  {
-    title: 'Трагедія',
-    description:
-      'Жанр, де навіть героїчні персонажі стикаються з невідворотною поразкою.',
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/1720/1720783.png',
+      'Глибокі емоції, психологічні конфлікти та складні людські стосунки.',
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/6655/6655045.png',
   },
 ];
 

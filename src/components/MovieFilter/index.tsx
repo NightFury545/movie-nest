@@ -16,6 +16,7 @@ import {
 } from '@/data/movie-filter.ts';
 import type { MovieFilterProps } from '@/components/MovieFilter/movie-filter.types.ts';
 import React from 'react';
+import { SortButton } from '@/components/SortButton';
 
 const MovieFilter: React.FC<MovieFilterProps> = ({
   filters,
@@ -32,13 +33,15 @@ const MovieFilter: React.FC<MovieFilterProps> = ({
         defaultValue={filters.genres}
         onChange={(v) => onChange({ genres: v })}
       />
-
-      <Select
-        placeholder="Сортувати за..."
-        options={movieSortBy}
-        defaultValue={filters.sortBy}
-        onChange={(v) => onChange({ sortBy: v })}
-      />
+      <div className={styles['movie-filter__sort-bar']}>
+        <Select
+          placeholder="Сортувати за..."
+          options={movieSortBy}
+          defaultValue={filters.sortBy}
+          onChange={(v) => onChange({ sortBy: v })}
+        />
+        <SortButton onChange={(v) => onChange({ sortOrder: v })} />
+      </div>
 
       <ReleaseYear
         value={filters.releaseYear}
@@ -66,13 +69,13 @@ const MovieFilter: React.FC<MovieFilterProps> = ({
       <MultiSelect
         placeholder="Країна виробництва"
         options={productionCountries}
-        defaultValue={filters.productionCountries}
-        onChange={(v) => onChange({ productionCountries: v })}
+        defaultValue={filters.countries}
+        onChange={(v) => onChange({ countries: v })}
       />
       <Status
-        value={filters.status}
+        value={filters.statuses}
         options={movieStatuses}
-        onChange={(v) => onChange({ status: v })}
+        onChange={(v) => onChange({ statuses: v })}
       />
     </aside>
   );

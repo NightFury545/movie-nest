@@ -14,6 +14,7 @@ import { GiAges } from 'react-icons/gi';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Button from '@/components/ui/Button';
+import Spinner from '@/components/Spinner';
 
 const tabs = ['Жанри', 'Актори', 'Коментарі'];
 
@@ -40,6 +41,8 @@ const DescriptionSection: React.FC<DescriptionSectionProps> = ({
   duration,
   age,
   country,
+  handleAddToFavorites,
+  isFavoriteLoading,
 }) => {
   return (
     <section className={styles['description']}>
@@ -62,14 +65,24 @@ const DescriptionSection: React.FC<DescriptionSectionProps> = ({
             className={styles['description__image']}
           />
           <div className={styles['description__buttons']}>
-            <Button variant="secondary">Додати в улюблене</Button>
-            <Button variant="secondary">Додати до колекції</Button>
+            <Button
+              onClick={handleAddToFavorites}
+              icon={isFavoriteLoading ? <Spinner /> : undefined}
+              variant="secondary"
+            >
+              Додати в улюблене
+            </Button>
+            <Button disabled={true} variant="secondary">
+              Додати до колекції
+            </Button>
           </div>
         </div>
 
         <div className={styles['description__content']}>
           <h2 className={styles['description__title']}>{title}</h2>
-          <p className={styles['description__text']}>{description}</p>
+          <p className={styles['description__text']}>
+            {description || 'Опису немає'}
+          </p>
 
           <div className={styles['description__tabs']}>
             {tabs.map((tab) => (

@@ -11,13 +11,12 @@ const ActorsSection: React.FC<ActorsSectionProps> = ({ actors }) => {
       </h2>
 
       <div className={styles['actors-section__grid']}>
-        {actors.map((actor, i) => (
+        {actors?.map((actor, i) => (
           <ActorCard
             key={i}
             name={actor.name}
-            birthYear={actor.birthYear}
-            role={actor.role}
-            imageUrl={actor.imageUrl}
+            role={actor.character!}
+            imageUrl={actor.profileUrl!}
           />
         ))}
       </div>

@@ -8,13 +8,10 @@ export const movieGenres = [
 ];
 
 export const movieSortBy = [
-  { label: 'Рік виходу (нові спочатку)', value: 'release_desc' },
-  { label: 'Рік виходу (старі спочатку)', value: 'release_asc' },
-  { label: 'Популярність', value: 'popularity_desc' },
-  { label: 'Рейтинг (вищий спочатку)', value: 'rating_desc' },
-  { label: 'Рейтинг (нижчий спочатку)', value: 'rating_asc' },
-  { label: 'Назва (A → Я)', value: 'title_asc' },
-  { label: 'Назва (Я → A)', value: 'title_desc' },
+  { label: 'Рік виходу', value: 'releaseYear' },
+  { label: 'Популярність', value: 'popularity' },
+  { label: 'Рейтинг', value: 'rating' },
+  { label: 'Назва', value: 'title' },
 ];
 
 export const movieLanguages = [

@@ -4,8 +4,18 @@ import styles from './signIn-form.module.css';
 import logo from '@/assets/movie-nest-logo.png';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import type { SignInFormProps } from '@/components/SignInForm/signIn-form.types.ts';
+import React, { useState } from 'react';
+import Spinner from '@/components/Spinner';
 
-const SignInForm = () => {
+const SignInForm: React.FC<SignInFormProps> = ({ onSubmit, isLoading }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = () => {
+    onSubmit({ email, password });
+  };
+
   return (
     <div className={styles['signin-form']}>
       <img src={logo} alt="MovieNest" className={styles['signin-form__logo']} />
@@ -17,10 +27,29 @@ const SignInForm = () => {
       <p className={styles['signin-form__subtitle']}>Поринь у світ фільмів</p>
 
       <div className={styles['signin-form__form']}>
-        <Input type="email" label="Електронна адреса" />
-        <Input type="password" label="Пароль" />
+        <Input
+          type="email"
+          label="Електронна адреса"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <Input
+          type="password"
+          label="Пароль"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-        <Button className={styles['signin-form__submit']}>Увійти</Button>
+        <Button
+          className={styles['signin-form__submit']}
+          onClick={handleSubmit}
+          disabled={isLoading}
+          icon={isLoading ? <Spinner /> : undefined}
+        >
+          Увійти
+        </Button>
 
         <div className={styles['signin-form__divider']}>
           <span>АБО</span>

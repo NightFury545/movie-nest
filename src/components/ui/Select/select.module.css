@@ -59,6 +59,15 @@
   box-sizing: border-box;
 }
 
+.select__menu::-webkit-scrollbar {
+  display: none;
+}
+
+.select__menu {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 .select__option {
   padding: 8px 10px;
   font-size: 0.9rem;

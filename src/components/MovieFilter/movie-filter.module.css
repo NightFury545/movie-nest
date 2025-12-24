@@ -10,3 +10,10 @@
   height: fit-content;
   gap: 12px;
 }
+
+.movie-filter__sort-bar {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  align-items: center;
+}

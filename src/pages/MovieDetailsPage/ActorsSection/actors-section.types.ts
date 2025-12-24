@@ -1,5 +1,5 @@
-import type { ActorCardProps } from '@/components/ActorCard/actor-card.types.ts';
+import type { ActorSummary } from '@/types/actor.ts';
 
 export interface ActorsSectionProps {
-  actors: ActorCardProps[];
+  actors?: ActorSummary[];
 }

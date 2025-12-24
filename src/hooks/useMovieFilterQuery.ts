@@ -1,5 +1,6 @@
 import { useQueryStates } from 'nuqs';
 import { parseRange } from '@/utils/parsers.ts';
+import type { MovieSortableField, SortOrder } from '@/types';
 
 const DEFAULTS = {
   releaseYear: [1950, 2025] as [number, number],
@@ -24,7 +25,12 @@ export const useMovieFilterQuery = () => {
       serialize: serializeList as (value: string[]) => string,
     },
     sortBy: {
-      defaultValue: '',
+      defaultValue: '' as MovieSortableField,
+      parse: (v) => v ?? '',
+      serialize: (v) => (v ? v : null),
+    },
+    sortOrder: {
+      defaultValue: '' as SortOrder,
       parse: (v) => v ?? '',
       serialize: (v) => (v ? v : null),
     },
@@ -59,12 +65,12 @@ export const useMovieFilterQuery = () => {
       parse: parseList,
       serialize: serializeList as (value: string[]) => string,
     },
-    productionCountries: {
+    countries: {
       defaultValue: [] as string[],
       parse: parseList,
       serialize: serializeList as (value: string[]) => string,
     },
-    status: {
+    statuses: {
       defaultValue: [] as string[],
       parse: parseList,
       serialize: serializeList as (value: string[]) => string,
